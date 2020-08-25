@@ -1,0 +1,58 @@
+<div class="page" data-name="My">
+    <div class="page-content">
+     	<!--顶部-->
+     	<div class="row" id="my-title">
+     		<!--设置图标-->
+     		<div class="col-100" id="my-set" >
+	     		<a href="#view-set" class="tab-link link"><i class="f7-icons">gear</i></a>
+     		</div>
+     		<!--头像-->
+ 			<div class="col-100" style="margin-top:-30px;text-align:center;color:white;">
+ 				<div class="my-headimage" >
+ 					<img id="head_image" src="./img/LOGOs.png" width="100%" height="100%" style="border-radius:50%;"/>
+ 				</div>
+ 				<font onclick="tologins()" id="login_point" style="display: none;color:white;">请登陆</font>
+ 			</div>
+     	</div>
+     	<!--订单查询-->
+     		<div class="list" id="list">
+          		<ul>
+	      			<li id="none-list" onclick="selectsList()">
+				      <a href="#view-selectList" class="tab-link item-link item-content">
+				        <div class="item-media"><i class="f7-icons">tags</i></div>
+				        <div class="item-inner">
+				          <div class="item-title">订单查询</div>
+				        </div>
+				      </a>
+				    </li>
+	        <!--我的信息-->
+	      			<li id="none-myinfo">
+				      <a href="#view-myinfo" class="tab-link item-link item-content" onclick="getMyinfo()">
+				        <div class="item-media"><i class="f7-icons">chats</i></div>
+				        <div class="item-inner">
+				          <div class="item-title">我的信息</div>
+				        </div>
+				      </a>
+				    </li>
+	        <!--我的收藏-->
+	      			<li id="none-mybest">
+				      <a href="#" class="item-link item-content">
+				        <div class="item-media"><i class="f7-icons">star</i></div>
+				        <div class="item-inner">
+				          <div class="item-title">我的收藏</div>
+				        </div>
+				      </a>
+				    </li>
+	        <!--关于我们-->
+	      			<li>
+				      <a href="#" class="item-link item-content">
+				        <div class="item-media"><i class="f7-icons">drawer</i></div>
+				        <div class="item-inner">
+				          <div class="item-title">关于我们</div>
+				        </div>
+				      </a>
+				    </li>
+     			</ul>
+	       </div>
+    </div>
+  </div>

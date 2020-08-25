@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <title>工程咻修</title>
+  <link rel="stylesheet" href="framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="framework7/css/framework7-icons.css">
+  <link rel="stylesheet" href="css/app.css">
+ <style>
+ 	 	a.change-click i,a.change-click span{
+				color:orange;
+   	}
+   	a.change-default i,a.change-default span{
+   				color:grey;
+   	}
+ </style>
+ <script>
+ 	function checkedlogin(){
+ 		//判断用户是否登录
+ 		if(localStorage.getItem('login_id')!=null){
+ 			console.log('当前登录账号为：'+localStorage.getItem('login_id'));
+ 			//显示个人信息
+ 		}else{
+ 			//隐藏个人信息页和订单查询页，头像显示默认并显示未登录
+ 			document.getElementById('head_image').src="./img/default-head.png";
+ 			document.getElementById('login_point').style.display="block";
+ 			document.getElementById('none-list').style.display="none";
+ 			document.getElementById('none-myinfo').style.display="none";
+ 			document.getElementById('none-mybest').style.display="none";
+ 			document.getElementById('quit').style.display="none";
+ 			document.getElementById('none-myinfos').style.display="none";
+ 		}
+ 		
+ 	}
+ </script>
+</head>
+<body class="color-theme-orange" onload="checkedlogin()">
+  <div id="app">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar"></div>
+    <!-- 视图/制表符容器 -->
+    <div class="views tabs ios-edges">
+      <!-- 切换视图标签的Tabbar -->
+      <div class="toolbar tabbar-labels toolbar-bottom-md" id="daohang">
+        <div class="toolbar-inner" id="daohang1">
+          <a href="#view-home" class="tab-link tab-link-active change-click">
+            <i class="icon f7-icons">home</i>
+            <span class="tabbar-label">首页</span>
+          </a>
+          <a href="#view-find" onclick="delete_a()" class="tab-link change-default" >
+            <i class="icon f7-icons">list</i>
+            <span class="tabbar-label">维修</span>
+          </a>
+          <a href="#view-send" class="tab-link change-default" >
+            <i class="icon f7-icons">add_round</i>
+            <span class="tabbar-label">发布</span>
+          </a>
+          <a href="#view-My" class="tab-link change-default" >
+            <i class="icon f7-icons">person</i>
+            <span class="tabbar-label">我的</span>
+          </a>
+        </div>
+      </div>
+
+      <div id="view-home" class="view view-main tab tab-active">
+        <div class="page" data-name="home">
+          <!-- 顶部导航栏 -->
+              <div class="toolbar">
+	            	<div class="toolbar-inner">
+		              <!-- 工具列表 -->
+		              	<div class="col-33">
+		              			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		              	</div>
+		              	<div class="col-33">
+		              		<div style="text-align: center;">
+		              			<a>重庆<i class="f7-icons address">down</i></a>
+		              		</div>
+		              	</div>
+		              	<div class="col-33">
+		              		<a href="#" class="link">
+		              			<i class="f7-icons icon news">bell<span class="badge" style="background:orange;">2</span></i>
+		              		</a>
+		              	</div>
+		            </div>
+          		</div>
+
+          <!-- 可滚动页面内容-->
+          <div class="page-content">
+          	<!--搜索框-->
+	         	<div class="row" style="margin-top:-15px;">
+	         		<div class="col-15">
+	         			<!--<button style="margin-top:25px;" onclick="ceshi()">测试</button>-->
+	         		</div>
+	         			<div class="col-70">
+		         			<form>
+		         				<li class="item-content item-input inline-label">
+		          				<i class="f7-icons" id="search-icons">search</i>
+				              <input type="text" placeholder="	搜索" name="search" class="search" id="search_ajax" onfocus="searchtoajax()"> 
+		         				</li>
+				        	</form>
+	         			</div>
+	          		<div class="col-15"></div>
+	          	</div> 
+	          	<!--广告swiper-->
+	          	<div class="row" style="margin-top:5px;">
+	          		<div class="swiper-container swiper-init">
+								  <div class="swiper-wrapper">
+								    <div class="swiper-slide"><img src="./img/bk1.jpg" width="100%" height="100%"></div>
+								    <div class="swiper-slide"><img src="./img/bk9.jpg" width="100%" height="100%"></div>
+								    <div class="swiper-slide"><img src="./img/bk10.jpg" width="100%" height="100%"></div>
+								    <div class="swiper-slide"><img src="./img/bk1.jpg" width="100%" height="100%"></div>
+								    <div class="swiper-slide"><img src="./img/bk1.jpg" width="100%" height="100%"></div>
+								  </div>
+								  <!--导航按钮-->
+								  <div class="swiper-button-prev"></div>
+    							<div class="swiper-button-next"></div>
+								</div>
+	          	</div>
+	          	<!--标题1-->
+	          	<div class="row" style="margin-top: 5px;">
+	          		<div class="col-100" id="title-all">
+	          			<strong>全部商品</strong>
+	          		</div>
+	          	</div>
+	          	<!--维修入口-->
+	          	<div class="row" style="margin:5px 15px 0 15px" id="service-open">
+	          		<div class="col-25"><a href="#view-list" id="computer" onclick="getData(this.id)" class="tab-link"><img src="./img/bk7.jpg" width="100%" height="40"></a><p>电脑维修</p></div>
+	          		<div class="col-25"><a href="#view-furniture" id="furniture" class="tab-link"><img src="./img/bk2.jpg" width="100%" height="40"></a><p>家具维修</p></div>
+	          		<div class="col-25"><a href="#view-list" id="pad" onclick="getData(this.id)" class="tab-link"><img src="./img/bk3.jpg" width="100%" height="40"></a><p>手机维修</p></div>
+	          		<div class="col-25"><a href="#view-list" id="other" onclick="getData(this.id)" class="tab-link"><img src="./img/bk7.jpg" width="100%" height="40"></a><p>更多维修</p></div>
+	          	</div>
+	          	<!--标题2-->
+	          	<div class="row">
+	          		<div class="col-33" style="margin:0 15px 0 15px" id="title2">
+	          			<strong>平台速递</strong><i class="f7-icons">fastforward</i>
+	          		</div>
+	          	</div>
+	          	<!--平台速递内容-->
+	          	<div class="row">
+	          		<div class="col-50">
+	          			<div class="pingtaisudi-left">
+	          				<strong>热门</strong>
+	          				<br><strong  class="ptsd-1">常见问题</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong  class="ptsd-1">一目了然</strong>
+	          			</div>
+	          		</div>
+	          		<div class="col-50">
+	          			<div class="pingtaisudi-right">
+	          				<strong>高效</strong>
+										<br><strong  class="ptsd-1">快速发布</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong  class="ptsd-1">一键高效</strong>
+	          			</div>
+	          		</div>
+	          	</div>
+	          	<!--标题3-->
+	          	<div class="row" style="margin:15px 15px 0 15px;">
+	          		<strong>热门服务</strong>
+	          		<div class="col-100" style="background:orange;height:3px;"></div>
+	          	</div>
+	          	<!--热门服务-->
+	          	<div class="row" style="margin:5px 15px 0 15px;" id="rmhw">
+	          		<div class="col-33"><a href="#"><img src="./img/bk4.jpg" width="100%" height="75"></a><font>手机屏幕更换  更优质更专业</font></div>
+	          		<div class="col-33"><a href="#"><img src="./img/bk6.jpg" width="100%" height="75"></a><font>正版电脑系统重装 正版 更放心</font></div>
+	          		<div class="col-33"><a href="#"><img src="./img/bk5.jpg" width="100%" height="75"></a><font>全面电脑清洁 更全面 更细节</font></div>
+	          	</div>
+	          	<br /><br /><br /><br />
+          </div>
+        </div>
+      </div>
+
+      <!-- find View -->
+      <div id="view-find" class="view tab">
+        <!-- 目录页将从 /find/ route 动态加载-->
+      </div>
+
+      <!-- send View -->
+      <div id="view-send" class="view tab">
+
+      </div>
+      <!--My view-->
+      <div id="view-My" class="view tab">
+      	
+      </div>
+      	<!--列表view-->
+      <div id="view-list" class="view tab">
+	          
+	 		</div>
+	 		<!--家具view-->
+	 		<div id="view-furniture" class="view tab">
+	          
+	 		</div>
+	 		<!--详细信息view-->
+	 		 <div id="view-display" class="view tab">
+	         
+	 		</div>
+	 		<!--个人信息view-->
+	 		 <div id="view-myinfo" class="view tab">
+	         
+	 		</div>
+	 		<!--订单查询view-->
+	 		<div id="view-selectList" class="view tab">
+	 			
+	 		</div>
+	 		<!--订单查询view-->
+	 		<div id="view-set" class="view tab">
+	 			
+	 		</div>
+    </div>
+
+  </div>
+  <script src="./framework7/js/framework7.min.js"></script>
+  <script src="./js/routes.js"></script>
+  <script src="./js/app.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/xiuxiu.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itcast.ssm.mapper.LoginMapperCustom">
+
+	<!-- 定义商品查询的sql片段，就是商品查询条件 -->
+	<sql id="login_where">
+		<!-- 使用动态sql，通过if判断，满足条件进行sql拼接
+		商品查询条件通过ItemsQueryVo包装对象 中itemsCustom属性传递 -->
+		<if test="accountCustom!=null">
+			<if test="accountCustom.user_id!=null and accountCustom.user_id!='' and accountCustom.password!=null and accountCustom.password!=''">
+ 				user_id =#{accountCustom.user_id} and password = #{accountCustom.password}
+ 			</if>
+		</if>
+
+	</sql>
+
+	<!-- 商品列表查询 -->
+	<!-- parameterType传入包装对象(包装了查询条件) resultType建议使用扩展对象 -->
+	<select id="findlogin" parameterType="cn.itcast.ssm.po.AccountVo"
+		resultType="cn.itcast.ssm.po.AccountCustom">
+		SELECT * FROM account
+		<where>
+			<include refid="login_where"></include>
+		</where>
+	</select>
+
+</mapper>

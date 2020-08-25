@@ -1,0 +1,113 @@
+<div class="page" data-name="display">
+	<div class="toolbar">
+	    <div class="toolbar-inner">
+	       <!-- 工具列表 -->
+	      	<div class="col-33">
+	      		<a href="#view-list" class="tab-link link">
+	      			<i class="f7-icons news">arrow_left</i>
+	      		</a>
+	      	</div>
+	      	<div class="col-33">
+	      		<div style="text-align: center;">
+	      			<a>重庆<i class="f7-icons address">down</i></a>
+	      		</div>
+	      	</div>
+	      	<div class="col-33"><a href="#" class="link">
+	      		<i class="f7-icons news">bell</i></a>
+	      	</div>
+	    </div>
+	</div>
+	<div class="page-content" id="send">
+		<!--预加载图标-->
+		<div style="text-align: center;">
+    	 	<div class="preloader" id="preloader2" style="margin:0 auto;display:none;"></div>
+    	 </div>
+	<!--标题-->
+     	<div class="block-title" style="text-align: center;">
+     		<strong style="text-align: center;">详细情况</strong>
+     		<hr style="color: #f3ebe7;"/>
+     	</div>
+     	<!--时间地点描述-->
+     	
+     	<div class="list no-hairlines-md" style="margin-top:-15px;">
+			<ul>
+				 <li>
+		          <div class="item-content item-input">
+		            <div class="item-inner">
+		              <div class="item-title item-label"><strong>下单时间</strong></div>
+		              <div class="item-input-wrap">
+		                <input type="text" value="" readonly="readonly" id="find_createdate"/>
+		              </div>
+		            </div>
+		          </div>
+		        </li>
+				<li>
+				  <div class="item-content item-input">
+		            <div class="item-inner">
+		              <div class="item-title item-label"><strong>维修地点</strong></div>
+		              <div class="item-input-wrap">
+		                <input type="text" value="" readonly="readonly" id="find_address">
+		              </div>
+		            </div>
+		          </div>
+				</li>
+				<li>
+				  <div class="item-content item-input">
+		            <div class="item-inner">
+		              <div class="item-title item-label"><strong>价格</strong></div>
+		              <div class="item-input-wrap">
+		                <input type="text" value="" readonly="readonly" id="find_praise">
+		              </div>
+		            </div>
+		          </div>
+				</li>
+				<li class="accordion-item"><a href="#" class="item-content item-link">
+			        <div class="item-inner">
+			          <div class="item-title">图片描述</div>
+			        </div></a>
+			      <div class="accordion-item-content">
+			        <div class="block">
+			          	<div class="row" style="padding: 0px 0px 0px 15%;">
+				     		<div class="col-25" style="background:orange;width:80px;height:80px;margin-top:15px;">
+				     		</div>
+				     		<div class="col-25" style="background:orange;width:80px;height:80px;margin-top:15px;">
+				     		</div>	
+				     		<div class="col-25">&nbsp;</div>	
+				     		<div class="col-25">&nbsp;</div>	
+				 		</div>
+			        </div>
+			      </div>
+			    </li>
+			    <li class="accordion-item">
+			    	<a href="#" class="item-content item-link">
+				        <div class="item-inner">
+				          <div class="item-title">问题详情</div>
+				        </div>
+			    	</a>
+			      <div class="accordion-item-content">
+			        <div class="block">
+			          	<p id="find_content"></p>
+			        </div>
+			      </div>
+			    </li>
+				<li>
+				  <div class="item-content item-input">
+		            <div class="item-inner">
+		              <div class="item-title item-label"><strong>联系方式</strong></div>
+		              <div class="item-input-wrap">
+		                <input type="text" value="" readonly="readonly" id="find_phone">
+		              </div>
+		            </div>
+		          </div>
+				</li>
+			</ul>
+		</div>  
+		<p class="row">
+			<p id="getID" style="display:none;"></p><!--存储ID-->
+			<a href="#" onclick="accept()" class="button col button-round" style="color:orange;border:1px orange solid;">接单</a>
+		</p>
+		<p><br /><br /><br /><br /></p>
+	</div>
+	
+	
+</div>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itcast.ssm.mapper.ItemsMapperCustom">
+
+	<!-- 定义商品查询的sql片段，就是商品查询条件 -->
+	<sql id="item_query_where">
+		<!-- 使用动态sql，通过if判断，满足条件进行sql拼接 商品查询条件通过ItemsQueryVo包装对象 中itemsCustom属性传递 -->
+		<if test="itemCustom!=null">
+			<if test="itemCustom.flag!=null">
+				flag =#{itemCustom.flag}
+			</if>
+		</if>
+	</sql>
+
+	<select id="findqueryItems" parameterType="cn.itcast.ssm.po.AccountVo"
+		resultType="cn.itcast.ssm.po.ItemCustom">
+		select * from item
+		<where>
+			<include refid="item_query_where"></include>
+		</where>
+	</select>
+
+	<insert id="findInsertItems" parameterType="cn.itcast.ssm.po.Item">
+		<!-- 解决自增获取id after最后查询自增字段，然后注入属性id，返回integer -->
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO item (user_id,title,content,phone,address,flag,state)
+		VALUES(#{user_id},#{title},#{content},#{phone},#{address},#{flag},#{state})
+	</insert>
+
+	<insert id="findReceiveItems" parameterType="cn.itcast.ssm.po.ReceiveItemCustom">
+		INSERT INTO receiveitem (user_id,item_id,receivedate,result)
+		VALUES(#{user_id},#{item_id},#{receivedate},#{result})
+	</insert>
+
+
+
+</mapper>

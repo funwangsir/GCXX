@@ -1,0 +1,162 @@
+<div class="page" data-name="settings">
+       <div class="toolbar">
+            <div class="toolbar-inner">
+              <!-- 工具列表 -->
+		              	<div class="col-33">
+		              		<a href="#" class="link">
+		              			<i class="f7-icons news" onclick="clean()" style="font-size:25px;">close</i>
+		              		</a>
+		              	</div>
+		              	<div class="col-33">
+		              		<div style="text-align: center;">
+		              			<a>重庆<i class="f7-icons address">down</i></a>
+		              		</div>
+		              	</div>
+		              	<div class="col-33">
+		              		<a href="#" class="link" id="send-submit" onclick="submit()">
+		              			<i class="f7-icons" style="font-size:25px;">check</i>
+		              		</a>
+		              	</div>
+            </div>
+         </div>
+		  <div class="page-content">
+		  	<!--上传订单-->
+		  	<div class="row" style="margin-top:18px;font-size:20px;color:orange;text-align: center;height:30px;">
+		  		<div style="margin:0 auto;">发布维修单</div>
+		  	</div>
+		  	<!--维修选择-->
+		  	<div class="list" id="list">
+	          <ul>
+				<li>
+  <!--<a class="item-link smart-select smart-select-init">
+    <select name="choose_type" id="choose_type">
+      <option value="phone" selected>手机</option>
+      <option value="pad">平板</option>
+      <option value="computer">电脑</option>
+      <option value="printer">打印机</option>
+      <option value="other">其它</option>
+    </select>
+    <div class="item-content">
+      <div class="item-inner">
+        <div class="item-title">维修类型</div>
+      </div>
+    </div>
+  </a>-->
+				  
+				  <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+				    <select name="choose_type" id="choose_type">
+				      <option value="phone" selected>手机</option>
+				      <option value="pad">平板</option>
+				      <option value="computer">电脑</option>
+				      <option value="Smhm">实木红木</option>
+				      <option value="Pgsf">皮革沙发</option>
+				      <option value="Dbbl">地板玻璃</option>
+				      <option value="Bsbg">板式办公</option>
+				      <option value="other">其它</option>
+				    </select>
+				    <div class="item-content">
+				      <div class="item-inner">
+				        <div class="item-title">维修类型</div>
+				      </div>
+				    </div>
+				  </a>
+				</li>
+				<li>
+				  <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+				    <select name="mode" id="mode">
+				      <option value="上门维修" selected>上门维修</option>
+				      <option value="到店维修">到店维修</option>
+				    </select>
+				    <div class="item-content">
+				      <div class="item-inner">
+				        <div class="item-title">维修方式</div>
+				      </div>
+				    </div>
+				  </a>
+				</li>
+			  </ul>
+			</div>
+			<!--填写信息-->
+			<div class="list no-hairlines-md" style="margin-top:-25px;;">
+  				<ul>
+  					<!--标题-->
+  					 <li>
+			          <div class="item-content item-input">
+			            <div class="item-inner">
+			              <div class="item-title item-label"><strong>标题</strong></div>
+			              <div class="item-input-wrap">
+			                <input type="text" id="send_title" placeholder=" 请输入简短的标题">
+			              </div>
+			            </div>
+			          </div>
+		        	</li>
+  					<!--问题描述-->
+  					<li>
+			          <div class="item-content item-input">
+			            <div class="item-inner">
+			              <div class="item-title item-label"><strong>问题描述</strong></div>
+			              <div class="item-input-wrap">
+			                <textarea class="resizable" id="send_content" placeholder="建议在500字以内"></textarea>
+			              </div>
+			            </div>
+			          </div>
+		        	</li>
+			    	<!--期望维修时间-->
+			    	<li>
+			          <div class="item-content item-input">
+			            <div class="item-inner">
+			              <div class="item-title item-label"><strong>维修地点</strong></div>
+			              <div class="item-input-wrap">
+			                <input type="text" id="address" placeholder="请输入维修地点">
+			              </div>
+			            </div>
+			          </div>
+		        	</li>
+				    <!--联系方式-->
+				    <li>
+			          <div class="item-content item-input">
+			            <div class="item-inner">
+			              <div class="item-title item-label"><strong>联系方式</strong></div>
+			              <div class="item-input-wrap">
+			                <input type="text" id="send_phone" placeholder=" 微信 / 手机号 / 邮箱">
+			              </div>
+			            </div>
+			          </div>
+		        	</li>
+					<!--维修价格-->
+				    <li class="item-content item-input item-input-with-info">
+				      <div class="item-inner">
+				        <div class="item-title item-label"><strong>报价</strong></div>
+				        <div class="item-input-wrap">
+				          <input type="text" placeholder="请输入合适的维修价格" id="send_praise"  required validate pattern="[0-9]*" data-error-message="只能输入数字">
+				          <div class="item-input-info">无报价则不需填写</div>
+				        </div>
+				      </div>
+				    </li>
+				    <!--图片上传-->
+				    <li>
+						<div class="row">
+							<div class="col-50">
+								<div class="card" style="margin-left:15px;width: auto;">
+									<div class="card-content card-content-padding" style="text-align: center;position:relative;color:gainsboro;" onclick="up_files()">
+   <input type="file" accept="image/*" multiple capture="camera" id="up_files" onchange="preview(this)" style="position:absolute;opacity:0;" />
+<i class="f7-icons" id="up_img_icons">add_round</i><br />
+<p>图片上传</p>
+										
+							   		</div>
+								</div>
+							</div>
+							<div class="col-50">
+								<div class="card">
+									<div id="container"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							
+						</div>
+				    </li>
+			  </ul>
+			</div>
+	  	</div>
+</div>

@@ -1,0 +1,202 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--状态栏的颜色主题-->
+    <meta name="theme-color" content="#ef903e">
+    <title>工程咻修登录</title>
+    <link rel="stylesheet" href="./framework7/css/framework7.min.css">
+    <link rel="stylesheet" href="./framework7/css/framework7-icons.css">
+    <style type="text/css">
+    	div.find-pw a{
+			font-size:10px;
+		}
+		div.find-pw{
+			margin-top:25px;
+		}
+		div#login-title{
+			margin-top:25px;
+		}
+		div#account{
+			border-right:1px orange solid;
+		}
+		div.login-titles:after{
+			background: orange;
+		}
+		div#login1,div#login2{
+			text-align: center;
+		}
+    </style>
+  </head>
+  <script>
+  	function ceshi1(){
+  		console.log(localStorage.getItem('login_id'));
+  	}
+  </script>
+  <body class="color-theme-orange" onload="ceshi1()">
+    <div id="login">
+      <!-- 状态栏覆盖 -->
+      <div class="statusbar"></div>
+      <!-- 主视图, 应该设置"view-main"类-->
+      <div class="view view-main">
+        <!-- 初始页面，“数据名称”包含页面名称 -->
+        <div data-name="home" class="page">
+          <!-- 工具栏 -->
+	          <div class="toolbar">
+	          	<div class="row">
+		          	<div class="col-33">
+					       <a href="#" class="tab-link link" onclick="tomains()"><i class="f7-icons" style="font-size:20px;">arrow_left</i></a>
+			      		</div>
+		            <div class="col-33" style="text-align:center;"><p class="login-title">登录</p></div>
+		          	<div class="col-33"></div>
+	          	</div>
+	          </div>
+          <!-- 可滚动页面内容 -->
+          <div class="page-content">
+        		<div class="page no-navbar no-toolbar no-swipeback">
+				  <div class="page-content login-screen-content">
+				  	<!--登录选项-->
+				  	<div class="row login-titles" id="login-title">
+				  		<div class="col-50" id="account">
+					  			<div id="login1">
+					  				<a href="#tab1" class="tab-link tab-link-active">账号登录</a>
+					  			</div>				  		
+					  		</div>
+				  		<div class="col-50">
+					  			<div id="login2">
+					  				<a href="#tab2" class="tab-link">手机快捷登录</a>
+					  			</div>
+				  		</div>
+				  	</div>
+					<div class="tabs">
+				  	<!-- 账号登录 -->
+				  		<div class="tab tab-active" id="tab1">
+					    	<!--<form id="loginform">-->
+								<div class="list inline-labels no-hairlines-md">
+								  	<ul>
+									    <li class="item-content item-input"> 
+									      <div class="item-inner">
+									        <div class="item-title item-label">账号</div>
+									        <div class="item-input-wrap" style="margin-left:-25px;">
+									          <input type="text" placeholder=" 学号 / 手机号" id="stu_num" value="">
+									          <span class="input-clear-button"></span>
+									        </div>
+									      </div>
+									    </li>
+									    <li class="item-content item-input">
+									      <div class="item-inner">
+									        <div class="item-title item-label">密码</div>
+									        <div class="item-input-wrap" style="margin-left:-25px;">
+									          <input type="password" id="stu_pw">
+									          <span class="input-clear-button"></span>
+									        </div>
+									      </div>
+									    </li>
+									</ul>
+								</div>
+						       <div class="row">
+						          <button class="col button button-fill button-round" id="submit">登录</button>
+						       </div>
+						       <p style="color:red;" id="tishi">提示：<i id="tishi-i"></i></p>
+						       <div class="find-pw">
+							       	<div style="text-align: center;"><a href="#">疑问解决?</a></div>
+						      </div>
+					    <!--</form>-->
+					</div>
+					<!-- 手机号验证码登录 -->
+					<div class="tab" id="tab2">
+					 	<form>
+							<div class="list inline-labels no-hairlines-md">
+							  	<ul>
+								    <li class="item-content item-input"> 
+								      <div class="item-inner">
+								        <div class="item-title item-label">手机号</div>
+								        <div class="item-input-wrap" style="margin-left:-25px;">
+								          <input type="text" placeholder=" 学号 / 手机号" name="user">
+								          <span class="input-clear-button"></span>
+								        </div>
+								      </div>
+								    </li>
+								    <li class="item-content item-input">
+								      <div class="item-inner">
+								        <div class="item-title item-label">验证码</div>
+								        <div class="item-input-wrap" style="margin-left:-25px;">
+								          <input type="password" name="password">
+								          <span class="input-clear-button"></span>
+								        </div>
+								      </div>
+								    </li>
+								</ul>
+							</div>
+						      <div class="row">
+						          <button class="button button-fill button-round">登录</button>
+						       </div>
+						       <div class="find-pw">
+							       	<div style="text-align: center;"><a href="#">疑问解决?</a></div>
+						      </div>
+					    </form>
+					 </div><!-- tab2 -->
+					</div><!-- tabs -->
+				  </div><!-- page-content login-screen-content-->
+				</div><!-- page no-navbar no-toolbar no-swipeback-->
+	          </div><!-- page-content -->
+	        </div><!-- 初始页面，“数据名称”包含页面名称 -->
+	      </div><!-- 主视图, 应该设置"view-main"类-->
+	    </div><!-- App顶级元素 -->
+	   <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./framework7/js/framework7.min.js"></script>
+  </body>
+  <script type="text/javascript">
+var login = new Framework7();
+var mainView = login.views.create('.view-main');
+var $$ = Dom7;
+$$('#tishi').hide();
+$$('#submit').on('click',function(e){
+	var stu_num  = $$('#stu_num').val();
+	var stu_pw = $$('#stu_pw').val();
+	if(stu_num == "" || stu_pw == "")
+	{
+		$$('#tishi-i').text("未输入");
+		$$('#tishi').show();
+	}
+	else{
+	//登录时创建本地存储id
+//login.dialog.preloader('登录中...');//加载ajax前先显示预加载
+//		$.ajax({
+//					type: "POST",
+//					url: "http://192.168.43.17:2212/MainTain/Login.action",
+//					async: true,
+//					data: {
+//						'user_id': stu_num,
+//						'password': stu_pw,
+//					},
+//					dataType: 'text',
+//					success	: function(data, textStatus) {
+//						login.dialog.close();//加载完成隐藏预加载
+//						if(data == "FAIL"){
+							$$('#tishi-i').text("账号或密码错误");
+							$$('#tishi').show();
+//						}
+//						else{
+//							localStorage.setItem("login_id",data);//创建数据永久保存的数据对象
+//							console.log('账号为：'+localStorage.getItem("login_id"));
+//							window.location.replace('main.html');
+//						}
+//					},
+//					error: function(error, textStatus, reason) {
+//						console.log('出现错误:' + JSON.stringify(error) + '\n状态：' + textStatus + '\n原因' + reason);
+//					}
+//				});
+	}
+});
+
+function tomains(){
+	localStorage.removeItem("login_id");
+	if(localStorage.getItem('login_id') == null){
+	 		window.location.replace('main.html');
+	 	}else{cansole.log('未能删除id');}
+}
+  </script>
+
+</html>

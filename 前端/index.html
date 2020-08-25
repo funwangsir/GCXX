@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="./framework7/css/framework7.min.css">
+    <title></title>
+    <!--<script type="text/javascript">
+   		document.addEventListener('plusready', function(){
+//   			console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   		});
+   		
+    </script>-->
+</head>
+<!---->
+<body onload="checked()">
+	<div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50" class="swiper-container swiper-init" id="swiper_image">
+	  
+	  <div class="swiper-wrapper">
+	    <div class="swiper-slide"><img src="./img/logo1.jpg" width="100%" height="100%" id="img"/></div>
+	    <div class="swiper-slide"><img src="./img/logo2.jpg" width="100%" height="100%" id="img"/></div>
+	    <div class="swiper-slide" onclick="guide()"><img src="./img/logo3.jpg" width="100%" height="100%" id="img"/></div>
+	  </div>
+	  <div class="swiper-pagination"></div>
+	</div>
+<script src="./framework7/js/framework7.min.js"></script>	
+</body>
+
+<script>
+var index  = new Framework7();
+//swiper
+var swiper = index.swiper.create('.swiper-container',{
+   pagination: {
+    el: '.swiper-pagination',
+    type: 'bullets',
+  },
+  autoplay: {
+    delay: 3000,
+  },
+});		
+	
+function checked(){
+	//本地判断用户是是否加载过引导页
+		if(localStorage.getItem('guide')!=null){
+//			localStorage.removeItem('guide');
+   			document.getElementById('swiper_image').style.display="none";
+   			window.location.replace('main.html');
+   		}
+}
+
+//登录跳转
+function guide(){
+	//点击过最后一张引导图则代表已打开过该app，创建本地存储变量
+	localStorage.setItem('guide','true');
+	window.location.replace('main.html');
+}
+</script>
+</html>
